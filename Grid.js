@@ -64,12 +64,12 @@ class Grid {
 
         ctx.strokeStyle = '#ffffff';
         for (let i = 0; i <= cols; i++) {
-            let x = i*cellWidth;
+            let x = Math.floor(i*cellWidth) + 0.5;
             this.line(ctx, x, 0, x, height);
         }
 
         for (let i = 0; i <= rows; i++) {
-            let y = i*cellHeight;
+            let y = Math.floor(i*cellHeight) + 0.5;
             this.line(ctx, 0, y, width, y);
         }
 

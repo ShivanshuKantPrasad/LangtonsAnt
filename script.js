@@ -30,7 +30,6 @@ settings = {
 }
 
 grid = new Grid(settings);
-grid.draw(ctx);
 
 function timestamp() {
     return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
