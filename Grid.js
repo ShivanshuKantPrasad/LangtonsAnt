@@ -38,7 +38,7 @@ class Grid {
 
 
         this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rules.length;
-        console.log(rotation, this.antpos, this.antHead);
+        // console.log(rotation, this.antpos, this.antHead);
 
     }
 
