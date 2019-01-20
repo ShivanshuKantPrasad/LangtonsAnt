@@ -14,7 +14,7 @@ class Grid {
         };
         this.cells = Array(settings.cols);
         for (let i = 0; i < settings.cols; i++) {
-            this.cells[i] = Array(settings.rows).fill(0);
+            this.cells[i] = Array(settings.rows).fill(-1);
         }
 
     }
@@ -23,10 +23,12 @@ class Grid {
 
         if(this.finished) return;
 
+        this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rules.length;
+
         let rotation = this.settings.rules[this.cells[this.antpos.x][this.antpos.y]].rotation;
         let newHead = {
-            x: rotation * this.antHead.y,
-            y: this.antHead.x
+            x: - rotation * this.antHead.y,
+            y: rotation * this.antHead.x
         };
 
         this.antHead = newHead;
@@ -35,11 +37,6 @@ class Grid {
 
         this.finished = this.antpos.x >= this.settings.cols || this.antpos.y >= this.settings.rows;
         if (this.finished) return;
-
-
-        this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rules.length;
-        // console.log(rotation, this.antpos, this.antHead);
-
     }
 
     draw(ctx){
@@ -59,7 +56,7 @@ class Grid {
                 let x1 = i * cellWidth;
                 let y1 = j * cellHeight;
 
-                ctx.fillStyle = this.settings.rules[this.cells[i][j]].color;
+                ctx.fillStyle = this.cells[i][j] === -1 ? '#595959' :this.settings.rules[this.cells[i][j]].color;
                 ctx.fillRect(x1, y1, cellWidth, cellHeight)
 
             }
@@ -76,6 +73,8 @@ class Grid {
             this.line(ctx, 0, y, width, y);
         }
 
+        ctx.stroke();
+
         ctx.fillStyle = '#e00';
         let x = this.antpos.x * cellWidth + 0.5 * cellWidth;
         let y = this.antpos.y * cellHeight + 0.5 * cellHeight;
@@ -91,7 +90,6 @@ class Grid {
         if(color) ctx.srokeStyle = color;
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.stroke();
     }
 
 

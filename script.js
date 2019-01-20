@@ -13,8 +13,8 @@ let settings;
 let isRunning = false;
 
 settings = {
-    rows: 30,
-    cols: 20,
+    rows: 80,
+    cols: 100,
     height,
     width,
     rules: [
@@ -39,7 +39,7 @@ function timestamp() {
 let now,
     dt   = 0,
     last = timestamp(),
-    step = 1/60;
+    step = 1/100;
 
 function frame() {
     now = timestamp();
