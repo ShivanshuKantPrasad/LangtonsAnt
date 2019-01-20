@@ -11,8 +11,8 @@ let grid;
 let settings;
 
 settings = {
-    rows: 20,
-    cols: 30,
+    rows: 30,
+    cols: 20,
     height,
     width,
     rules: [
