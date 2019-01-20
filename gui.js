@@ -26,6 +26,8 @@ function reset() {
     isRunning = false;
     settings.width = settingMenu.getValue("Width");
     settings.height = settingMenu.getValue("Height");
+    settings.rows = settingMenu.getValue("Rows");
+    settings.cols = settingMenu.getValue("Cols");
     canvas.height = settings.height;
     canvas.width = settings.width;
     grid = new Grid(settings);
