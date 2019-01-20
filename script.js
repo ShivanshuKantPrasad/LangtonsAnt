@@ -10,6 +10,8 @@ canvas.width = width;
 let grid;
 let settings;
 
+let isRunning = false;
+
 settings = {
     rows: 30,
     cols: 20,
