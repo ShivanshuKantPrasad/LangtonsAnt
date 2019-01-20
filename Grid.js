@@ -34,6 +34,7 @@ class Grid {
         this.antpos.y += this.antHead.y;
 
         this.finished = this.antpos.x >= this.settings.cols || this.antpos.y >= this.settings.rows;
+        if (this.finished) return;
 
 
         this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rules.length;
