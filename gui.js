@@ -37,8 +37,8 @@ function reset() {
 settingMenu = QuickSettings.create( 0, 0, "Settings")
     .addRange("Width", 100, 10000, window.innerWidth, 10, widthChanged)
     .addRange('Height', 100, 10000, window.innerHeight, 10, heightChanged)
-    .addRange("Rows", 10, window.innerHeight / 5, 20, 2, rowChanged)
-    .addRange("Cols", 10, window.innerWidth / 5, 30, 2, colsChanged)
+    .addRange("Rows", 10, window.innerHeight / 5, 80, 2, rowChanged)
+    .addRange("Cols", 10, window.innerWidth / 5, 100, 2, colsChanged)
     .addText('Rule', 'RL', rulesChanged)
     .addButton("Reset", reset);
 

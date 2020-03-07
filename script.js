@@ -19,9 +19,14 @@ settings = {
     width,
     rule: 'RL',
     colors: [
-        '#00ff04',
+        '#00ff00',
         '#000000',
-        '#ff0000'
+        '#ff0000',
+        '#0000ff',
+        '#ffffff',
+        '#00ffff',
+        '#ff00ff',
+        '#ffff00'
     ]
 };
 
