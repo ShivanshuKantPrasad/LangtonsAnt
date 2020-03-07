@@ -23,9 +23,9 @@ class Grid {
 
         if(this.finished) return;
 
-        this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rules.length;
+        this.cells[this.antpos.x][this.antpos.y] = (this.cells[this.antpos.x][this.antpos.y] + 1) % this.settings.rule.length;
 
-        let rotation = this.settings.rules[this.cells[this.antpos.x][this.antpos.y]].rotation;
+        let rotation = this.settings.rule[this.cells[this.antpos.x][this.antpos.y]] === "R" ? 1 : -1;
         let newHead = {
             x: - rotation * this.antHead.y,
             y: rotation * this.antHead.x
@@ -35,8 +35,8 @@ class Grid {
         this.antpos.x += this.antHead.x;
         this.antpos.y += this.antHead.y;
 
-        this.finished = this.antpos.x >= this.settings.cols || this.antpos.y >= this.settings.rows;
-        if (this.finished) return;
+        this.finished = this.antpos.x >= this.settings.cols || this.antpos.y >= this.settings.rows ||
+                        this.antpos.x < 0 || this.antpos.y < 0;
     }
 
     draw(ctx){
@@ -56,7 +56,7 @@ class Grid {
                 let x1 = i * cellWidth;
                 let y1 = j * cellHeight;
 
-                ctx.fillStyle = this.cells[i][j] === -1 ? '#595959' :this.settings.rules[this.cells[i][j]].color;
+                ctx.fillStyle = this.cells[i][j] === -1 ? '#595959' : this.settings.colors[this.cells[i][j]];
                 ctx.fillRect(x1, y1, cellWidth, cellHeight)
 
             }

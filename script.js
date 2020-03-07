@@ -17,17 +17,13 @@ settings = {
     cols: 100,
     height,
     width,
-    rules: [
-        {
-            color: '#00ff04',
-            rotation: 1
-        },
-        {
-            color: '#000000',
-            rotation: -1
-        }
+    rule: 'RL',
+    colors: [
+        '#00ff04',
+        '#000000',
+        '#ff0000'
     ]
-}
+};
 
 grid = new Grid(settings);
 
