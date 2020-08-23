@@ -18,6 +18,7 @@ settings = {
     height,
     width,
     rule: 'RL',
+    delay: 200,
     colors: [
         '#00ff00',
         '#000000',
@@ -39,14 +40,16 @@ function timestamp() {
 let now,
     dt   = 0,
     last = timestamp(),
-    step = 1/100;
+    step = settings.delay/1000;
 
 function frame() {
     now = timestamp();
     dt = dt + Math.min(1, (now - last) / 1000);
+    step = settings.delay/1000;
     while(dt > step) {
+        // console.log(dt);
         dt = dt - step;
-        if(isRunning) grid.step();
+        if(isRunning) grid.step(dt);
     }
     grid.draw(ctx);
     last = now;

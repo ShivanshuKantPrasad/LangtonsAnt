@@ -22,6 +22,10 @@ function rulesChanged() {
 
 }
 
+function delayChanged() {
+    step = settingMenu.getValue("Delay") / 1000;
+}
+
 function reset() {
     isRunning = false;
     settings.width = settingMenu.getValue("Width");
@@ -29,6 +33,7 @@ function reset() {
     settings.rows = settingMenu.getValue("Rows");
     settings.cols = settingMenu.getValue("Cols");
     settings.rule = settingMenu.getValue("Rule");
+    settings.delay = settingMenu.getValue("Delay");
     canvas.height = settings.height;
     canvas.width = settings.width;
     grid = new Grid(settings);
@@ -39,12 +44,13 @@ settingMenu = QuickSettings.create( 0, 0, "Settings")
     .addRange('Height', 100, 10000, window.innerHeight, 10, heightChanged)
     .addRange("Rows", 10, window.innerHeight / 5, 80, 2, rowChanged)
     .addRange("Cols", 10, window.innerWidth / 5, 100, 2, colsChanged)
+    .addRange("Delay", 1, 1000, 200, 1, delayChanged)
     .addText('Rule', 'RL', rulesChanged)
     .addButton("Reset", reset);
 
 
 
-settingMenu.addElement("", play);
+    settingMenu.addElement("", play);
 
 play.addEventListener('click', () => {
     isRunning = !isRunning;
